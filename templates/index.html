@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="nn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kodeverkstaden · IT-gruppen</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script id="lessons-data" type="application/json">{{ lessons | tojson }}</script>
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <header><a class="brand" href="/"><span class="brand-icon">&lt;/&gt;</span> IT-gruppen <span class="brand-divider">/</span> <span class="brand-sub">Kodeverkstaden</span></a><span class="course-label"><span class="dot"></span> JavaScript for nybyrjarar</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">FRÅ NYSGJERRIG TIL KODESKRIVAR</p><h1>Små steg. <span>Ekte kode.</span></h1><p>Start med grunnlaget og bygg deg opp til interaktive nettsider.<br class="desktop"> Lær funksjonar, lister og DOM før du hentar API-data til din eigen tabell.</p><div class="tags"><span>4 nivå · Grunnlag til API</span><span>{{ lessons | length }} praktiske oppgåver</span><span>Tre hint i kvart steg</span></div></section>
+    <div class="workspace">
+      <aside><div class="sidebar-title"><h2>Læringsstien din</h2><span id="progress-count">0 / {{ lessons | length }}</span></div><progress id="progress" max="{{ lessons | length }}" value="0" aria-label="Fullførte oppgåver"></progress><nav id="lesson-nav" aria-label="Oppgåver"></nav><div class="sidebar-note"><span>✦</span><p>Du treng ikkje kunne alt.<br>Du treng berre å prøve.</p></div></aside>
+      <section class="lesson-card" aria-labelledby="lesson-title">
+        <div class="lesson-heading"><span class="eyebrow" id="lesson-number"></span><span class="pill" id="lesson-topic"></span></div>
+        <h2 id="lesson-title"></h2><p id="lesson-description"></p>
+        <details id="html-panel" hidden><summary>HTML du skal jobbe med</summary><pre id="html-source"></pre></details>
+        <div class="editor"><div class="editor-bar"><span><span class="js-icon">JS</span> di-losning.js</span><button id="reset" class="text-button" type="button">Start på nytt ↺</button></div><label class="sr-only" for="code">JavaScript-koden din</label><textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="editor-help"></textarea><div class="editor-footer"><span id="editor-help">JavaScript · <kbd>Ctrl</kbd> + <kbd>Enter</kbd> for å køyre</span><button id="run" class="primary" type="button">Køyr koden <span>▶</span></button></div></div>
+        <div class="output-heading"><h3>RESULTAT</h3><span id="run-state">Klar når du er</span></div><pre id="output" aria-live="polite">Resultatet av koden din dukkar opp her.</pre><p id="feedback" role="status"></p>
+        <section id="preview-panel" hidden><h3>Førehandsvising</h3><p>Prøv knappane sjølv for å sjå kva koden gjer.</p><div id="preview-host"></div></section>
+        <section class="hints" aria-labelledby="hint-title"><div><h3 id="hint-title">Treng du eit lite dytt?</h3><p>Vel eit hint. Trykk igjen for å lukke det. Det tredje viser fasiten.</p></div><div id="hint-buttons" class="hint-buttons"></div><div id="hint-content"></div></section>
+        <div class="lesson-footer"><span id="lesson-position"></span><button id="next" type="button" class="next-button">Neste oppgåve →</button></div>
+      </section>
+    </div>
+    <footer>Laga for nye medlemmer i IT-gruppen <span>Læring skjer éi linje om gongen.</span></footer>
+  </main>
+</body>
+</html>
